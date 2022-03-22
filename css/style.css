@@ -1129,6 +1129,7 @@ nav.mobile {
   background: #0E0E0E;
   -webkit-box-shadow: 0px 0px 1px #FFFFFF;
           box-shadow: 0px 0px 1px #FFFFFF;
+  z-index: 100;
 }
 
 @media (max-width: 767px) {
