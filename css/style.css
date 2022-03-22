@@ -1,3 +1,4 @@
+@charset "UTF-8";
 a, a:hover, a:focus, a:active {
   color: inherit;
   outline: none;
@@ -5,7 +6,7 @@ a, a:hover, a:focus, a:active {
   cursor: pointer;
 }
 
-h1, h2, h3, p, label, span, a, form, select, div, blockquote, cite, figure, figcaption, table, ul, ol, dl {
+h1, h2, h3, h4, p, label, span, a, form, select, div, blockquote, cite, figure, figcaption, table, ul, ol, dl {
   line-height: normal;
   margin: 0px;
   -webkit-box-sizing: border-box;
@@ -60,6 +61,16 @@ input::placeholder, textarea::placeholder, select::placeholder {
   font-weight: 300;
 }
 
+input[type=text][type=text]::-ms-clear, input[type=text][type=text]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=text][type="search"]::-webkit-search-decoration, input[type=text][type="search"]::-webkit-search-cancel-button, input[type=text][type="search"]::-webkit-search-results-button, input[type=text][type="search"]::-webkit-search-results- {
+  display: none;
+}
+
 select {
   appearance: none;
   -webkit-appearance: none;
@@ -67,6 +78,8 @@ select {
   -ms-appearance: none;
   background: url(../imgs/icons/shevron-down.svg) no-repeat calc(100% - 1em) center transparent;
   background-size: 1em .5em;
+  -webkit-box-shadow: 0px 0px 2px 0px #fff;
+          box-shadow: 0px 0px 2px 0px #fff;
 }
 
 select option {
@@ -115,6 +128,7 @@ button {
   font-weight: 800;
   font-size: inherit;
   letter-spacing: 0.02em;
+  cursor: pointer;
 }
 
 .btn:hover, .btn:focus, .btn:active {
@@ -125,6 +139,7 @@ button {
 .btn:disabled {
   color: #C4C4C4;
   background-color: #7a7878;
+  pointer-events: none;
 }
 
 @media (max-width: 1199px) {
@@ -137,6 +152,52 @@ button {
   .btn {
     padding: 1em 1.5em;
   }
+}
+
+label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+label span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+label input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  background: transition;
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid #fff;
+  width: 1em;
+  height: 1em;
+}
+
+label input[type="radio"] {
+  border-radius: 50%;
+}
+
+label input[type="radio"]:checked {
+  background: -webkit-gradient(linear, left top, right top, from(#FF512F), to(#F09819));
+  background: linear-gradient(to right, #FF512F, #F09819);
+}
+
+label input[type="checkbox"] {
+  border-radius: 3px;
+}
+
+label input[type="checkbox"]:checked {
+  background: -webkit-gradient(linear, left top, right top, from(#FF512F), to(#F09819));
+  background: linear-gradient(to right, #FF512F, #F09819);
 }
 
 .password {
@@ -170,8 +231,77 @@ button {
   background-image: url(../imgs/icons/invisible.svg);
 }
 
-h1 {
+/* CUSTOM SELECT */
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select button {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  text-align: left;
+  padding: .75em 1em;
+  background: url(../imgs/icons/shevron-down.svg) no-repeat calc(100% - 1em) center transparent;
+  background-size: 1em .5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1em;
+  -webkit-box-shadow: 0px 0px 2px 0px #fff;
+          box-shadow: 0px 0px 2px 0px #fff;
+}
+
+.custom-select button:empty::after {
+  content: "Не выбрано";
+  opacity: .4;
   font-family: "SF Pro Display";
+  font-weight: 300;
+}
+
+.custom-select .cs-options {
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  display: none;
+  max-height: 300px;
+  overflow-y: scroll;
+  background: radial-gradient(100% 436.95% at 0% 0%, rgba(41, 69, 102, 0.3) 0%, rgba(171, 65, 208, 0) 100%, rgba(171, 65, 208, 0) 100%);
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+}
+
+.custom-select .cs-options::-webkit-scrollbar {
+  width: 0;
+}
+
+.custom-select .cs-options.opened {
+  display: block;
+}
+
+.custom-select .cs-options label {
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  text-align: left;
+  padding: .75em 1em;
+  -webkit-box-shadow: 0px 0px 2px 0px #fff;
+          box-shadow: 0px 0px 2px 0px #fff;
+}
+
+.custom-select .cs-options label input {
+  display: none;
+}
+
+h1, h4, .title-font {
+  font-family: "SF Pro Display";
+}
+
+h1 {
   font-size: 1.6em;
   margin: 4em 0 1em;
 }
@@ -196,7 +326,6 @@ h1 {
 }
 
 h2 {
-  font-family: "Raleway";
   font-size: 3em;
   font-weight: 600;
   text-align: center;
@@ -246,8 +375,23 @@ h3 {
   }
 }
 
-.title-font {
-  font-family: "SF Pro Display";
+h4 {
+  font-size: 1.6em;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+@media (max-width: 1199px) {
+  h4 {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 767px) {
+  h4 {
+    font-size: 1.2em;
+  }
 }
 
 .fs-07 {
@@ -346,8 +490,20 @@ h3 {
   color: #31B404;
 }
 
+.bb-1 {
+  border-bottom: 1px solid;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-start {
+  text-align: left;
+}
+
+.text-end {
+  text-align: right;
 }
 
 .w-100 {
@@ -452,6 +608,17 @@ body {
   }
 }
 
+@media (max-width: 575px) {
+  #sec-1 {
+    padding: 0 1em;
+  }
+}
+
+#sec-1 .img-fluid {
+  -webkit-filter: drop-shadow(0px 0px 120px rgba(255, 255, 255, 0.05));
+          filter: drop-shadow(0px 0px 120px rgba(255, 255, 255, 0.05));
+}
+
 @media (max-width: 991px) {
   #sec-1 .img-fluid {
     max-height: 450px;
@@ -465,9 +632,6 @@ body {
 }
 
 @media (max-width: 575px) {
-  #sec-1 {
-    padding: 0 1em;
-  }
   #sec-1 .img-fluid {
     max-height: 250px;
   }
@@ -593,6 +757,12 @@ header nav ul a.active {
   background: radial-gradient(100% 436.95% at 0% 0%, rgba(41, 69, 102, 0.4) 0%, rgba(171, 65, 208, 0) 100%);
 }
 
+@media (max-width: 991px) {
+  #sec-2 form .mb-6 {
+    margin-bottom: 0px;
+  }
+}
+
 #sec-2 .box {
   -webkit-backdrop-filter: blur(50px);
           backdrop-filter: blur(50px);
@@ -625,8 +795,44 @@ header nav ul a.active {
 }
 
 @media (max-width: 1199px) {
+  #sec-2 .fs-15 {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-2 .fs-15 {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 1199px) {
   #sec-2 .fs-13 {
     font-size: 1em;
+  }
+}
+
+@media (max-width: 1199px) {
+  #sec-2 .fs-11 {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-2 .fs-11 {
+    font-size: .9em;
+  }
+}
+
+@media (max-width: 1199px) {
+  #sec-2 .fs-09 {
+    font-size: .8em;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-2 .fs-09 {
+    font-size: .7em;
   }
 }
 
@@ -702,6 +908,211 @@ header nav ul a.active {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 30px;
+}
+
+#sec-5 .swiper {
+  height: calc(170px*2 + 10.38em*2 + 30px);
+}
+
+@media (max-width: 1199px) {
+  #sec-5 .swiper {
+    height: calc(140px*2 + 10.38em*2 + 30px);
+  }
+}
+
+@media (max-width: 991px) {
+  #sec-5 .swiper {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-bottom: 2em;
+  }
+}
+
+#sec-5 .swiper .swiper-slide {
+  height: calc(170px + 10.38em);
+}
+
+@media (max-width: 1199px) {
+  #sec-5 .swiper .swiper-slide {
+    height: calc(140px + 10.38em);
+  }
+}
+
+@media (max-width: 991px) {
+  #sec-5 .swiper .swiper-slide {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
+#sec-5 .swiper .swiper-pagination {
+  bottom: 0px;
+}
+
+#sec-5 .swiper .swiper-pagination-bullet {
+  background-color: #fff;
+}
+
+#sec-5 article .box {
+  background: radial-gradient(100% 436.95% at 0% 0%, rgba(41, 69, 102, 0.3) 0%, rgba(171, 65, 208, 0) 100%, rgba(171, 65, 208, 0) 100%);
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+  padding: 1em 1.5em;
+}
+
+@media (max-width: 767px) {
+  #sec-5 article .box {
+    padding: .5em 1em;
+    border-radius: 20px;
+  }
+}
+
+#sec-5 article .box figure {
+  margin-bottom: .5em;
+}
+
+@media (max-width: 767px) {
+  #sec-5 article .box figure {
+    margin-bottom: .3em;
+  }
+}
+
+#sec-5 article .box figure figcaption {
+  font-family: "SF Pro Display";
+  font-size: 1.1em;
+  margin-bottom: .5em;
+}
+
+@media (max-width: 767px) {
+  #sec-5 article .box figure figcaption {
+    font-size: .9em;
+    margin-bottom: .3em;
+  }
+}
+
+#sec-5 article .box figure img {
+  width: 100%;
+  height: 170px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media (max-width: 1199px) {
+  #sec-5 article .box figure img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 767px) {
+  #sec-5 article .box figure img {
+    height: 115px;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-5 article .box figure img {
+    height: 40vw;
+  }
+}
+
+#sec-5 article .box .text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.2em;
+  height: 2.4em;
+  font-family: "SF Pro Display";
+  font-size: .9em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+@media (max-width: 767px) {
+  #sec-5 article .box .text {
+    font-size: .7em;
+  }
+}
+
+#sec-5 article.main figure {
+  margin-bottom: 1.5em;
+}
+
+@media (max-width: 767px) {
+  #sec-5 article.main figure {
+    margin-bottom: 1em;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-5 article.main figure {
+    margin-bottom: .5em;
+  }
+}
+
+#sec-5 article.main figure figcaption {
+  font-size: 1.3em;
+  margin-bottom: 1.5em;
+}
+
+@media (max-width: 767px) {
+  #sec-5 article.main figure figcaption {
+    margin-bottom: 1em;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-5 article.main figure figcaption {
+    font-size: 1em;
+    margin-bottom: .5em;
+  }
+}
+
+#sec-5 article.main figure img {
+  height: 380px;
+}
+
+@media (max-width: 1399px) {
+  #sec-5 article.main figure img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 1199px) {
+  #sec-5 article.main figure img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 767px) {
+  #sec-5 article.main figure img {
+    height: 215px;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-5 article.main figure img {
+    height: 40vw;
+  }
+}
+
+#sec-5 article.main .text {
+  font-size: 1.2em;
+}
+
+@media (max-width: 575px) {
+  #sec-5 article.main .text {
+    font-size: .8em;
+  }
+}
+
+@media (max-width: 575px) {
+  #sec-5 article.main .btn {
+    font-size: .8em;
+  }
 }
 
 #sec-6 .fs-13 {

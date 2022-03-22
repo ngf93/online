@@ -14,7 +14,7 @@ a, a:hover, a:focus, a:active {
     text-decoration: none;
     cursor: pointer;
 }
-h1, h2, h3, p, label, span, a, form, select, div, blockquote, cite, figure, figcaption, table, ul, ol, dl {
+h1, h2, h3, h4, p, label, span, a, form, select, div, blockquote, cite, figure, figcaption, table, ul, ol, dl {
     line-height: normal;
     margin: 0px;
     box-sizing: border-box;
@@ -41,6 +41,24 @@ input, textarea, select {
   &::-ms-input-placeholder {font-family: $title-font; color: $gray; font-weight: 300;}
   &::placeholder {font-family: $title-font; color: $gray; font-weight: 300;}
 }
+input[type=text] {
+    &[type=text]{
+        &::-ms-clear, &::-ms-reveal {
+            display: none; 
+            width : 0; 
+            height: 0;
+        }
+    }
+    &[type="search"]{
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results- {
+            display: none;
+        }
+    }
+    
+}
 select {
     appearance: none;
     -webkit-appearance: none;
@@ -48,6 +66,7 @@ select {
     -ms-appearance: none;
     background: url(../imgs/icons/shevron-down.svg) no-repeat calc(100% - 1em) center transparent;
     background-size: 1em .5em;
+    box-shadow: 0px 0px 2px 0px #fff;
     option {
         color: #000;
         &[disabled]{color: $gray;}
@@ -80,6 +99,7 @@ button {
     font-weight: 800;
     font-size: inherit;
     letter-spacing: 0.02em;
+    cursor: pointer;
     &:hover, &:focus, &:active {
         color: #fff;
         background-position: right center;
@@ -87,12 +107,43 @@ button {
     &:disabled {
         color: #C4C4C4;
         background-color: #7a7878;
+        pointer-events: none;
     }
     @media (max-width: 1199px){
         padding: 1em 2em;
     }
     @media (max-width: 767px){
         padding: 1em 1.5em;
+    }
+}
+
+label {
+    display: flex;
+    align-items: center;
+    span {flex: 1;}
+    input {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        background: transition;
+        margin: 0px;
+        padding: 0px;
+        border: 2px solid #fff;
+        width: 1em;
+        height: 1em;
+        &[type="radio"] {
+            border-radius: 50%;
+            &:checked {
+                background: $gradient;
+            }
+        }
+        &[type="checkbox"] {
+            border-radius: $radius-small;
+            &:checked {
+                background: $gradient;
+            }
+        }
     }
 }
 
@@ -123,9 +174,60 @@ button {
     }
 }
 
+/* CUSTOM SELECT */
+.custom-select {
+    position: relative;
+    width: 100%;
+    button {
+        width: 100%;
+        background: transparent;
+        border: 1px solid #fff;
+        border-radius: $radius-small;
+        text-align: left;
+        padding: .75em 1em;
+        background: url(../imgs/icons/shevron-down.svg) no-repeat calc(100% - 1em) center transparent;
+        background-size: 1em .5em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1em;
+        box-shadow: 0px 0px 2px 0px #fff;
+        &:empty::after {
+            content: "Не выбрано";
+            opacity: .4;
+            font-family: $title-font;
+            font-weight: 300;
+        }
+    }
+    .cs-options {
+        position: absolute;
+        top: calc(100% - 1px);
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        display: none;
+        max-height: 300px;
+        overflow-y: scroll;
+        background: radial-gradient(100% 436.95% at 0% 0%, rgba(41, 69, 102, 0.3) 0%, rgba(171, 65, 208, 0) 100%, rgba(171, 65, 208, 0) 100%);
+        backdrop-filter: blur(50px);
+        &::-webkit-scrollbar {width: 0;}
+        &.opened {display: block;}
+        label {
+            background: transparent;
+            border: 1px solid #fff;
+            border-radius: $radius-small;
+            text-align: left;
+            padding: .75em 1em;
+            box-shadow: 0px 0px 2px 0px #fff;
+            input {display: none;}
+        }
+    }
+}
 
+
+
+h1, h4, .title-font {font-family: $title-font;}
 h1 {
-    font-family: $title-font;
     font-size: 1.6em;
     margin: 4em 0 1em;
     @media (max-width: 1199px){
@@ -140,7 +242,6 @@ h1 {
     }
 }
 h2 {
-    font-family: $main-font;
     font-size: 3em;
     font-weight: 600;
     text-align: center;
@@ -170,7 +271,19 @@ h3 {
         font-size: 1.25em;
     }
 }
-.title-font {font-family: $title-font;}
+h4 {
+    font-size: 1.6em;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 1em;
+    @media (max-width: 1199px){
+        font-size: 1.4em;
+    }
+    @media (max-width: 767px){
+        font-size: 1.2em;
+    }
+}
+
 .fs {
     &-07 {font-size: 0.7em;}
     &-08 {font-size: 0.8em;}
@@ -199,8 +312,11 @@ h3 {
 }
 .red {color: $red;}
 .green {color: $green;}
+.bb-1 {border-bottom: 1px solid;}
 
 .text-center {text-align: center;}
+.text-start {text-align: left;}
+.text-end {text-align: right;}
 .w-100 {width: 100%;}
 .h-100 {height: 100%;}
 .img-fluid {
@@ -267,15 +383,14 @@ body {
     @media (max-width: 1199px){
         padding: 0 2em;
     }
-    @media (max-width: 991px){
-        .img-fluid {max-height: 450px;}
-    }
-    @media (max-width: 767px){
-        .img-fluid {max-height: 350px;}
-    }
     @media (max-width: 575px){
         padding: 0 1em;
-        .img-fluid {max-height: 250px;}
+    }
+    .img-fluid {
+        filter: drop-shadow(0px 0px 120px rgba(255, 255, 255, 0.05));
+        @media (max-width: 991px){max-height: 450px;}
+        @media (max-width: 767px){max-height: 350px;}
+        @media (max-width: 575px){max-height: 250px;}
     }
     h1 {
         span {
@@ -352,6 +467,9 @@ header {
         align-items: stretch;
         justify-content: center;
         background: radial-gradient(100% 436.95% at 0% 0%, rgba(41, 69, 102, 0.4) 0%, rgba(171, 65, 208, 0) 100%);
+        @media (max-width: 991px){
+            .mb-6 {margin-bottom: 0px;}
+        }
     }
     .box {
         backdrop-filter: blur(50px);
@@ -374,10 +492,21 @@ header {
             margin: 0 auto 0 0;
         }
     }
+    .fs-15 {
+        @media (max-width: 1199px){font-size: 1.3em;}
+        @media (max-width: 575px){font-size: 1.1em;}
+    }
     .fs-13 {
         @media (max-width: 1199px){font-size: 1em;}
     }
-    
+    .fs-11 {
+        @media (max-width: 1199px){font-size: 1em;}
+        @media (max-width: 575px){font-size: .9em;}
+    }
+    .fs-09 {
+        @media (max-width: 1199px){font-size: .8em;}
+        @media (max-width: 575px){font-size: .7em;}
+    }
 }
 
 #sec-3 {
@@ -429,6 +558,136 @@ header {
     }
 }
 
+#sec-5 {
+    .swiper {
+        height: calc(170px*2 + 10.38em*2 + 30px);
+        @media (max-width: 1199px){
+            height: calc(140px*2 + 10.38em*2 + 30px);
+        }
+        @media (max-width: 991px){
+            height: fit-content;
+            padding-bottom: 2em;
+        }
+        .swiper-slide {
+            height: calc(170px + 10.38em);
+            @media (max-width: 1199px){
+                height: calc(140px + 10.38em);
+            }
+            @media (max-width: 991px){
+                height: fit-content;
+            }
+        }
+        .swiper-pagination{
+            bottom: 0px;
+            &-bullet {
+                background-color: #fff;
+            }
+        }
+    }
+    article {
+        .box {
+            background: radial-gradient(100% 436.95% at 0% 0%, rgba(41, 69, 102, 0.3) 0%, rgba(171, 65, 208, 0) 100%, rgba(171, 65, 208, 0) 100%);
+            backdrop-filter: blur(50px);
+            padding: 1em 1.5em;
+            @media (max-width: 767px){
+                padding: .5em 1em;
+                border-radius: 20px;
+            }
+            figure {
+                margin-bottom: .5em;
+                @media (max-width: 767px){
+                    margin-bottom: .3em;
+                }
+                figcaption {
+                    font-family: $title-font;
+                    font-size: 1.1em;
+                    margin-bottom: .5em;
+                    @media (max-width: 767px){
+                        font-size: .9em;
+                        margin-bottom: .3em;
+                    }
+                }
+                img {
+                    width: 100%;
+                    height: 170px;
+                    object-fit: cover;
+                    @media (max-width: 1199px){
+                        height: 140px;
+                    }
+                    @media (max-width: 767px){
+                        height: 115px;
+                    }
+                    @media (max-width: 575px){
+                        height: 40vw;
+                    }
+                }
+            }
+            .text {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                line-height: 1.2em;
+                height: 2.4em;
+                font-family: $title-font;
+                font-size: .9em;
+                flex: 1;
+                @media (max-width: 767px){
+                    font-size: .7em;
+                }
+            }
+        }
+        &.main {
+            figure {
+                margin-bottom: 1.5em;
+                @media (max-width: 767px){
+                    margin-bottom: 1em;
+                }
+                @media (max-width: 575px){
+                    margin-bottom: .5em;
+                }
+                figcaption {
+                    font-size: 1.3em;
+                    margin-bottom: 1.5em;
+                    @media (max-width: 767px){
+                        margin-bottom: 1em;
+                    }
+                    @media (max-width: 575px){
+                        font-size: 1em;
+                        margin-bottom: .5em;
+                    }
+                }
+                img {
+                    height: 380px;
+                    @media (max-width: 1399px){
+                        height: 300px;
+                    }
+                    @media (max-width: 1199px){
+                        height: 250px;
+                    }
+                    @media (max-width: 767px){
+                        height: 215px;
+                    }
+                    @media (max-width: 575px){
+                        height: 40vw;
+                    }
+                }
+            }
+            .text {
+                font-size: 1.2em;
+                @media (max-width: 575px){
+                    font-size: .8em;
+                }
+            }
+            .btn {
+                @media (max-width: 575px){
+                    font-size: .8em;
+                }
+            }
+        }
+    } 
+}
+
 #sec-6 {
     .fs-13 {font-size: 1em;}
 }
@@ -475,3 +734,4 @@ nav.mobile {
         }
     }
 }
+

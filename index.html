@@ -7,8 +7,9 @@
     <title>ОНЛАЙН - Российская Социальная Сеть - Онлайн. Аналог инстаграма.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap-grid.min.css" integrity="sha512-q0LpKnEKG/pAf1qi1SAyX0lCNnrlJDjAvsyaygu07x8OF4CEOpQhBnYiFW6YDUnOOcyAEiEYlV4S9vEc6akTEw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/stylesheet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 </head>
 <body>
     <div class="container">
@@ -57,57 +58,86 @@
                         <p class="fs-13">У вас есть возможность выбрать себе имя профиля одним из первых, пока они еще свободны. Всем первым зарегистрированным, мы обязательно продумаем какой-нибудь бонус. </p>
                     </div>
                 </div>
-                <!-- <div class="col-lg-5 mt-4 mt-lg-0">
-                    <form action="" class="box title-font p-4 p-xl-5 h-100">
-                        <div class="fs-13 fw-3">
-                            <label for="user-name" class="d-block  mb-3 mb-xl-4">Имя</label>
-                            <input type="text" name="user-name" id="user-name" placeholder="Имя" class="mb-4 mb-xl-5">
-                            <label for="user-email" class="d-block mb-3 mb-xl-4">Почта</label>
-                            <input type="email" name="user-email" id="user-email" placeholder="email" class="mb-4 mb-xl-5">
-                            <label for="user-phone" class="d-block mb-3 mb-xl-4">Телефон</label>
-                            <input type="tel" name="user-phone" id="user-phone" placeholder="Телефон" class="mb-4 mb-xl-5">
-                            <label for="user-nickname" class="d-block mb-3 mb-xl-4">Никнейм</label>
-                            <input type="text" name="user-nickname" id="user-nickname" placeholder="Никнейм" class="mb-4 mb-xl-5">
-                        </div>
-                        <button type="submit" class="btn w-100">Зарегистрироваться</button>
-                    </form>
-                </div> -->
-                <!-- 2 этап -->
-                <!-- <div class="col-lg-5 mt-4 mt-lg-0">
-                    <form action="" class="box title-font p-4 p-xl-5 h-100">
-                        <h3 class="text-center">Подтверждение через почту</h3>
-                        <div class="title-font fw-3 fs-13 text-center mb-3">Введите код, отправленный на Вашу почту</div>
-                        <div class="title-font fw-3 fs-11 text-center mb-5">Письмо возможно попадает в спам</div>
-                        <div class="fs-13 fw-3">
-                            <label for="code" class="d-block  mb-3 mb-xl-4">Код подверждения e-mail</label>
-                            <input type="text" name="code" id="code" placeholder="Код" class="mb-4 mb-xl-5">
-                        </div>
-                        <button type="submit" class="btn w-100">Подтвердить</button>
-                    </form>
-                </div> -->
-                <!-- 3 этап -->
                 <div class="col-lg-5 mt-4 mt-lg-0">
+                    <!-- 1 этап -->
                     <form action="" class="box title-font p-4 p-xl-5 h-100">
+                        <h3 class="text-center">Регистрация</h3>
+                        <div class="title-font text-center fs-11 fw-3 mb-4 mb-sm-5">Введите Вашу почту, чтобы получить код для регистрации</div>
+                        <div class="d-flex align-items-center justify-content-between mb-2 mb-sm-3 mb-xl-4">
+                            <label for="user-email" class="fs-13 fw-3">Почта</label>
+                            <div class="title-font red fs-09">Такой e-mail уже зарегистрирован</div>
+                        </div>
+                        <input type="email" name="user-email" id="user-email" placeholder="email" class="fs-13 fw-3 mb-4 mb-xl-5">
+                        <button type="submit" class="btn w-100 mb-6">Зарегистрироваться</button>
+                    </form>
+                    <!-- 2 этап -->
+                    <!-- <form action="" class="box title-font p-4 p-xl-5 h-100">
+                        <h3 class="text-center">Подтверждение через почту</h3>
+                        <div class="title-font text-center fs-13 fw-3 mb-2 mb-sm-4 mb-xl-5">Введите код, отправленный на Вашу почту</div>
+                        <div class="title-font text-center fs-11 fw-3 mb-4 mb-lg-5">Письмо возможно попадает в спам</div>
+                        <div class="d-flex align-items-center justify-content-between mb-2 mb-sm-3 mb-xl-4">
+                            <label for="code" class="fs-13 fw-3">Код подверждения</label>
+                            <div class="title-font red fs-09 text-end">Неверный код</div>
+                        </div>
+                        <input type="text" name="code" id="code" placeholder="Код" class="fs-13 fw-3 mb-4 mb-xl-5">
+                        <button type="submit" class="btn w-100 mb-6">Подтвердить</button>
+                    </form> -->
+                    <!-- 3 этап -->
+                    <!-- <form action="" class="box title-font p-4 p-xl-5 h-100">
                         <h3 class="text-center">Ваш e-mail подтверждён</h3>
                         <div class="title-font text-center fs-15 fw-5 mb-3">Придумайте пароль</div>
                         <div class="title-font fw-3 fs-11 text-center mb-2">Вы можете использовать латинские буквы, цифры и спецаильные символы в любом их сочетании</div>
-                        <div class="title-font fw-3 fs-11 text-center mb-5">Пароль должен быть не менее 8-ми символов</div>
+                        <div class="title-font fw-3 fs-11 text-center mb-4 mb-xl-5">Пароль должен быть не менее 8-ми символов</div>
                         <div class="fs-13 fw-3">
-                            <label for="pass-1" class="d-block mb-3 mb-xl-4">Пароль</label>
-                            <div class="password mb-4 mb-xl-5">
+                            <label for="pass-1" class="d-block mb-2 mb-sm-3 mb-xl-4">Пароль</label>
+                            <div class="password mb-3 mb-sm-4 mb-xl-5">
                                 <input type="password" name="pass-1" id="pass-1" placeholder="Пароль">
                                 <button type="button" data-state="invisible" onclick="changeState(this)"></button>
                             </div>
-                            <label for="pass-2" class="d-block mb-3 mb-xl-4">Повторите пароль</label>
+                            <label for="pass-2" class="d-block mb-2 mb-sm-3 mb-xl-4">Повторите пароль</label>
                             <div class="password">
                                 <input type="password" name="pass-2" id="pass-2" placeholder="Пароль">
                                 <button type="button" data-state="invisible" onclick="changeState(this)"></button>
                             </div>
                         </div>
-                        <div class="green title-font fs-11 mt-3">Пароли совпадают</div>
-                        <div class="red title-font fs-11 mt-3">Пароли не совпадают</div>
-                        <button type="submit" class="btn w-100 mt-4 mt-xl-5">Подтвердить</button>
-                    </form>
+                        <div class="green title-font fs-11 mt-2 mt-sm-3">Пароли совпадают</div>
+                        <div class="red title-font fs-11 mt-2 mt-sm-3">Пароли не совпадают</div>
+                        <button type="submit" class="btn w-100 mt-3 mt-sm-4 mt-xl-5">Подтвердить</button>
+                    </form> -->
+                    <!-- 4 этап -->
+                    <!-- <form action="" class="box title-font p-4 p-xl-5 h-100">
+                        <h3 class="text-center">Создание аккаунта</h3>
+                        <label for="user-name" class="d-block fs-13 fw-3 mb-2 mb-sm-3 mb-xl-4">Имя</label>
+                        <input type="text" name="first-name" id="user-name" placeholder="Имя" class="fs-13 fw-3 mb-3 mb-sm-4 mb-xl-5">
+                        <label for="user-surname" class="d-block fs-13 fw-3 mb-2 mb-sm-3 mb-xl-4">Фамилия</label>
+                        <input type="text" name="user-surname" id="user-surname" placeholder="Фамилия" class="fs-13 fw-3 mb-3 mb-sm-4 mb-xl-5">
+                        <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-3 mb-xl-4">
+                            <label for="user-patronymic" class="fs-13 fw-3">Отчество</label>
+                            <span class="fs-09 text-end ms-3">Не обязательно*</span>
+                        </div>
+                        <input type="text" name="user-patronymic" id="user-patronymic" placeholder="Отчество" class="fs-13 fw-3 mb-3 mb-sm-4 mb-xl-5">
+                        <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-3 mb-xl-4">
+                            <label for="user-nickname" class="fs-13 fw-3">Никнейм</label>
+                            <span class="fs-09 red text-end ms-3">Такой никнейм уже зарегистрирован</span>
+                        </div>
+                        <input type="text" name="user-nickname" id="user-nickname" placeholder="Никнейм" class="fs-13 fw-3 mb-3 mb-sm-4 mb-xl-5">
+                        <button type="submit" class="btn w-100">Зарегистрироваться</button>
+                    </form> -->
+                    <!-- 5 этап -->
+                    <!-- <form action="" class="box title-font p-4 p-xl-5 h-100">
+                        <h3 class="text-center">Завершение регистрации</h3>
+                        <label for="town" class="d-block fs-13 fw-3 mb-2 mb-sm-3 mb-xl-4">Город</label>
+                        <input type="text" name="town" id="town" placeholder="Город" class="mb-3 mb-sm-4 mb-xl-5">
+                        <label for="birthday" class="d-block fs-13 fw-3 mb-2 mb-sm-3 mb-xl-4">Дата рождения</label>
+                        <input type="date" name="birthday" id="birthday" placeholder="Город" class="mb-3 mb-sm-4 mb-xl-5">
+                        <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-3 mb-xl-4">
+                            <label for="user-phone" class="fs-13 fw-3">Телефон</label>
+                            <div class="fs-09 red text-end ms-3">Такой телефон уже зарегистрирован</div>
+                        </div>
+                        <input type="tel" name="user-phone" id="user-phone" placeholder="Телефон" class="mb-3 mb-sm-4 mb-xl-5">
+                        <button type="submit" class="btn w-100">Зарегестрироваться</button>
+                        <div class="text-center fs-09 fw-3 mt-2 mt-sm-3">Нажимая на кнопку, вы подтвержаете согласиие на обработку данных</div>
+                    </form> -->
                 </div>
             </div>
         </section>
@@ -124,7 +154,7 @@
             <div class="box">
                 <div class="row gx-4 gx-xxl-5">
                     <div class="d-none d-xl-block col-5">
-                        <img src="imgs/img1.png" alt="команда разработчиков" class="img-fluid">
+                        <img src="imgs/img1.jpg" alt="команда разработчиков" class="img-fluid">
                     </div>
                     <div class="col-xl-7">
                         <h3>Мы команда разработчиков из Казани</h3>
@@ -143,13 +173,80 @@
 
         <section id="sec-5" class="mb-6">
             <h2>Новости</h2>
-            <div class="row justify-content-between">
-                <div class="col-7">
-                    <article>
-                        <h3>Обновление 1.04</h3>
+            <div class="row gx-4 gx-xl-5 justify-content-between">
+                <div class="col-lg-7 mb-4 mb-sm-5 mb-lg-0">
+                    <article class="main">
+                        <h3 class="mb-3 mb-sm-4 mb-md-5">Первая версия</h3>
+                        <div class="box p-3 p-sm-4 p-md-5">
+                            <figure>
+                                <figcaption>Привычный функционал (03-04.2022)</figcaption>
+                                <img src="imgs/img2.jpg" alt="Привычный функционал (03-04.2022)">
+                            </figure>
+                            <div class="d-flex">
+                                <div class="text">Мы постарались воплотить в жизнь основной функционал Instagram</div>
+                                <button type="button" class="btn p-2 py-sm-3 px-sm-4 px-xl-5 ms-2">Подробнее</button>
+                            </div>
+                        </div>
                     </article>
                 </div>
-                <div class="col-4"></div>
+                <div class="col-lg-5 col-xxl-4">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <article>
+                                    <h4>Обновление 1.02</h4>
+                                    <div class="box">
+                                        <figure>
+                                            <figcaption>
+                                                Обновление Магазинов (04.04.2022)
+                                            </figcaption>
+                                            <img src="imgs/img2.jpg" alt="Обновление Магазинов (04.04.2022)">
+                                        </figure>
+                                        <div class="d-flex">
+                                            <div class="text">Добавится функционал для магазинов и блогеров Добавится функционал для магазинов и блогеров</div>
+                                            <button type="button" class="btn fs-07 py-2 px-2 px-md-4 ms-2">Подробнее</button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="swiper-slide">
+                                <article>
+                                    <h4>Обновление 1.02</h4>
+                                    <div class="box">
+                                        <figure>
+                                            <figcaption>
+                                                Обновление Магазинов (04.04.2022)
+                                            </figcaption>
+                                            <img src="imgs/img2.jpg" alt="Обновление Магазинов (04.04.2022)">
+                                        </figure>
+                                        <div class="d-flex">
+                                            <div class="text">Добавится функционал для магазинов и блогеров Добавится функционал для магазинов и блогеров</div>
+                                            <button type="button" class="btn fs-07 py-2 px-2 px-md-4 ms-2">Подробнее</button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="swiper-slide">
+                                <article>
+                                    <h4>Обновление 1.02</h4>
+                                    <div class="box">
+                                        <figure>
+                                            <figcaption>
+                                                Обновление Магазинов (04.04.2022)
+                                            </figcaption>
+                                            <img src="imgs/img2.jpg" alt="Обновление Магазинов (04.04.2022)">
+                                        </figure>
+                                        <div class="d-flex">
+                                            <div class="text">Добавится функционал для магазинов и блогеров Добавится функционал для магазинов и блогеров</div>
+                                            <button type="button" class="btn fs-07 py-2 px-2 px-md-4 ms-2">Подробнее</button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -163,11 +260,36 @@
                     </div>
                     <div>
                         <label for="category" class="d-block mb-3">Категория*</label>
-                        <select name="category" id="category">
-                            <option value="none" disabled selected>Не выбрано</option>
-                            <option value="cat-1">Категория 1</option>
-                            <option value="cat-2">Категория 2</option>
-                        </select>
+                        <div class="custom-select">
+                            <button type="button"></button>
+                            <div class="cs-options">
+                                <label>
+                                    <input type="radio"
+                                    name="category" value="Предложение сотрудничества">
+                                    <span>Предложение сотрудничества</span>
+                                </label>
+                                <label>
+                                    <input type="radio"
+                                    name="category" value="Пожелания разработчикам">
+                                    <span>Пожелания разработчикам</span>
+                                </label>
+                                <label>
+                                    <input type="radio"
+                                    name="category" value="Вопросы по приложению">
+                                    <span>Вопросы по приложению</span>
+                                </label>
+                                <label>
+                                    <input type="radio"
+                                    name="category" value="Финансовая поддержка">
+                                    <span>Финансовая поддержка</span>
+                                </label>
+                                <label>
+                                    <input type="radio"
+                                    name="category" value="Информационная поддержка">
+                                    <span>Информационная поддержка</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <label for="phone" class="d-block mb-3">Номер телефона*</label>
@@ -177,22 +299,25 @@
                         <label for="email" class="d-block mb-3">E-mail*</label>
                         <input type="email" name="email" id="email" placeholder="E-mail">
                     </div>
+                </div>
+                <div class="row justify-content-center mt-4 mt-md-5">
                     <div class="col-12">
                         <label for="proposal" class="d-block mb-3">Предложение*</label>
                         <textarea name="proposal" id="proposal" rows="7" placeholder="Предложение"></textarea>
                     </div>
-                </div>
-                <div class="row justify-content-center mt-4 mt-md-5">
-                    <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                    <div class="col-6 col-md-5 col-lg-4 col-xl-3 mt-4 mt-md-5">
                         <button type="submit" class="btn w-100">Отправить</button>
                     </div>
                 </div>
             </form>
         </section>
 
-        <footer class="mb-6 d-flex flex-column align-items-center">
+        <footer class="pb-4 pb-sm-5 d-flex flex-column align-items-center">
             <img src="imgs/logo.svg" alt="Online" class="logo">
             <div class="mt-3 fs-13">Переходи в Online</div>
+            <div class="text-center mt-3">
+                <a href="#" class="bb-1 title-font fs-09 fw-3">Политика конфиденциальности</a>
+            </div>
         </footer>
 
         <nav class="mobile d-block d-lg-none">
@@ -207,6 +332,8 @@
     </div>
 
     <!-- scripts -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+
 </body>
 </html>
