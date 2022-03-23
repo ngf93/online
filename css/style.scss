@@ -225,7 +225,6 @@ label {
 }
 
 
-
 h1, h4, .title-font {font-family: $title-font;}
 h1 {
     font-size: 1.6em;
@@ -313,6 +312,7 @@ h4 {
 .red {color: $red;}
 .green {color: $green;}
 .bb-1 {border-bottom: 1px solid;}
+.flex-1 {flex: 1;}
 
 .text-center {text-align: center;}
 .text-start {text-align: left;}
@@ -546,6 +546,9 @@ header {
         @media (max-width: 991px){
             padding: 2em;
         }
+        @media (max-width: 767px){
+            .flex-1 {flex:auto;}
+        }
         @media (max-width: 575px){
             padding: 1em;
         }
@@ -560,21 +563,21 @@ header {
 
 #sec-5 {
     .swiper {
-        height: calc(170px*2 + 10.38em*2 + 30px);
+        height: calc(170px*2 + 10.38em*2 + 30px) !important;
         @media (max-width: 1199px){
-            height: calc(140px*2 + 10.38em*2 + 30px);
+            height: calc(140px*2 + 10.38em*2 + 30px) !important;
         }
         @media (max-width: 991px){
-            height: fit-content;
+            height: fit-content !important;
             padding-bottom: 2em;
         }
         .swiper-slide {
-            height: calc(170px + 10.38em);
+            height: calc(170px + 10.38em) !important;
             @media (max-width: 1199px){
-                height: calc(140px + 10.38em);
+                height: calc(140px + 10.38em) !important;
             }
             @media (max-width: 991px){
-                height: fit-content;
+                height: fit-content !important;
             }
         }
         .swiper-pagination{

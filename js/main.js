@@ -1,17 +1,15 @@
 /* password button state change */
 function changeState(btn) {
-    if(btn.dataset.state == 'invisible'){
-      btn.previousElementSibling.setAttribute('type', 'text');
-      btn.dataset.state = 'visible';
-    } else {
-      btn.previousElementSibling.setAttribute('type', 'password');
-      btn.dataset.state = 'invisible';
-    }
+  if(btn.dataset.state == 'invisible'){
+    btn.previousElementSibling.setAttribute('type', 'text');
+    btn.dataset.state = 'visible';
+  } else {
+    btn.previousElementSibling.setAttribute('type', 'password');
+    btn.dataset.state = 'invisible';
+  }
 }
 
-/*************** 
-CUSTOM SELECT
-****************/
+/* CUSTOM SELECT */
 window.onload = function() {
   let selectElement = document.querySelectorAll('.custom-select');
   let arrSelects = Array.from(selectElement);
@@ -19,21 +17,6 @@ window.onload = function() {
       const btn = item.querySelector('button');
       const options = item.querySelector('.cs-options');
       let inputs = item.querySelectorAll('input');
-      // let name = inputs[0].name;
-
-      // let cur_inp; //выбранный input radio
-      // for(let i = 0; i < inputs.length; i++){
-      //   if(inputs[i].checked){
-      //     cur_inp = inputs[i];
-      //   }
-      // }
-
-      // if(cur_inp) {
-      //   let label_content = cur_inp.nextElementSibling.innerHTML; //содержимое label следующего после выбранного input
-      //   btn.innerHTML = label_content;
-      // } else {
-      //   btn.innerHTML = "Не выбрано";
-      // }
 
       // открываем/закрываем окно навигации, добаляя/удаляя активный класс
       const toggleMenu = function() {
@@ -68,9 +51,7 @@ window.onload = function() {
   });
 }
 
-
 const anchors = document.querySelectorAll('a.scroll-to')
-
 for (let anchor of anchors) {
   anchor.addEventListener('click', function (e) {
     e.preventDefault()
@@ -85,7 +66,6 @@ for (let anchor of anchors) {
 }
 
 const swiper = new Swiper('.swiper', {
-  
   direction: 'horizontal',
   slidesPerView: 1,
   spaceBetween: 20,
@@ -97,11 +77,14 @@ const swiper = new Swiper('.swiper', {
   breakpoints: {
     576: {
       slidesPerView: 2,
+      spaceBetween: 20,
     },
     768: {
+      slidesPerView: 2,
       spaceBetween: 30,
     },
     992: {
+      slidesPerView: 2,
       direction: 'vertical',
       pagination: false
     }
