@@ -51,19 +51,23 @@ window.onload = function() {
   });
 }
 
-const anchors = document.querySelectorAll('a.scroll-to')
-for (let anchor of anchors) {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault()
-    
-    const blockID = anchor.getAttribute('href')
-    
-    document.querySelector(blockID).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  })
-}
+/* smopth scroll to anchor */
+document.querySelectorAll('a.scroll-to').forEach(link => {
+  link.addEventListener('click', function(e) {
+      e.preventDefault();
+      let href = this.getAttribute('href').substring(1);
+      const scrollTarget = document.getElementById(href);
+      // const topOffset = document.querySelector('.scrollto').offsetHeight;
+      const topOffset = 0; // если не нужен отступ сверху 
+      const elementPosition = scrollTarget.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset;
+      window.scrollBy({
+          top: offsetPosition,
+          behavior: 'smooth'
+      });
+  });
+});
+
 
 const swiper = new Swiper('.swiper', {
   direction: 'horizontal',
