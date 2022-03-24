@@ -1,4 +1,8 @@
 @charset "UTF-8";
+html {
+  scroll-behavior: smooth;
+}
+
 a, a:hover, a:focus, a:active {
   color: inherit;
   outline: none;
@@ -569,7 +573,6 @@ body {
   font-size: 20px;
   color: #fff;
   font-family: "Raleway";
-  scroll-behavior: smooth;
 }
 
 @media (max-width: 1659px) {

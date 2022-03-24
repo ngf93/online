@@ -8,6 +8,8 @@ $gradient-full: linear-gradient(to right, #FF512F, #F09819, #FF512F);
 $red: #E70F0F;
 $green: #31B404;
 
+html {scroll-behavior: smooth;}
+
 a, a:hover, a:focus, a:active {
     color: inherit;
     outline: none;
@@ -358,7 +360,6 @@ body {
     font-size: 20px;
     color: #fff;
     font-family: $main-font;
-    scroll-behavior: smooth;
     @media (max-width: 1659px){
         font-size: 18px;
     }
