@@ -358,6 +358,7 @@ body {
     font-size: 20px;
     color: #fff;
     font-family: $main-font;
+    scroll-behavior: smooth;
     @media (max-width: 1659px){
         font-size: 18px;
     }
